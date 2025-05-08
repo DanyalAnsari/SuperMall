@@ -94,7 +94,8 @@ const UserSchema = new mongoose.Schema(
       }
     },
     password_reset_token: String,
-    password_reset_token_expires: Date
+    password_reset_token_expires: Date,
+    refresh_token: String
   },
   { 
     timestamps: true,

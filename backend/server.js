@@ -4,8 +4,7 @@ const { connectDB, closeDB, checkDBHealth } = require("./db/mongo");
 
 // Environment variables
 const PORT = process.env.PORT || 3000;
-const NODE_ENV = process.env.NODE_ENV || 'development';
-console.log(process.env.MONGO_DB_URI);
+const NODE_ENV = process.env.NODE_ENV.trim() || 'development';
 
 
 // Add health check endpoint to your app.js

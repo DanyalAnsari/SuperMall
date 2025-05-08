@@ -7,6 +7,7 @@ const router = require("./routes/MainRoute");
 const requestLogger = require('./middlewares/LoggerMiddleware');
 require('dotenv').config()
 
+
 // Initialize express app
 const app = express();
 
@@ -18,6 +19,7 @@ configureMiddleware(app);
 
 // Request Logger Middleware
 app.use(requestLogger);
+
 
 // Routes
 app.get("/health", (req, res) => {

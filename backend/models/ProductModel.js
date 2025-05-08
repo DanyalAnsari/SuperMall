@@ -103,6 +103,10 @@ const ProductSchema = new mongoose.Schema(
     featured:{
       type:Boolean,
       default:false
+    },
+    bestseller:{
+      type:Boolean,
+      default:false
     }
   },
   { 

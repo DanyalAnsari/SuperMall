@@ -17,11 +17,13 @@ const CategorySchema = new mongoose.Schema(
       trim: true,
       maxlength: [500, "Description cannot exceed 500 characters"]
     },
-    image: { 
+    icon: { 
       type: String,
+      trim: true,
+      default: "ShoppingBag",
       validate: {
-        validator: validators.isValidURL,
-        message: "Please provide valid image URL"
+        validator: (value) => /^[A-Za-z0-9]+$/.test(value),
+        message: "Icon name should contain only alphanumeric characters"
       }
     },
     parent_category: { 
@@ -40,7 +42,6 @@ const CategorySchema = new mongoose.Schema(
       type: String,
       unique: true,
       lowercase: true,
-      // index: true
     }
   },
   { 

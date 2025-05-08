@@ -6,6 +6,7 @@ const products = [
     discountedPrice: 169.99,
     stock: 50,
     category: "Electronics",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg",
       "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg",
@@ -23,6 +24,7 @@ const products = [
     price: 699.99,
     stock: 20,
     category: "Electronics",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/6782570/pexels-photo-6782570.jpeg",
       "https://images.pexels.com/photos/6782581/pexels-photo-6782581.jpeg",
@@ -41,6 +43,7 @@ const products = [
     discountedPrice: 99.99,
     stock: 30,
     category: "Fashion",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg",
       "https://images.pexels.com/photos/1152079/pexels-photo-1152079.jpeg",
@@ -54,12 +57,12 @@ const products = [
   },
   {
     name: "Comfort Fit Running Shoes",
-    description:
-      "Lightweight and breathable running shoes for optimal comfort.",
+    description: "Lightweight and breathable running shoes for optimal comfort.",
     price: 79.99,
     discountedPrice: 69.99,
     stock: 120,
     category: "Footwear",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/267308/pexels-photo-267308.jpeg",
       "https://images.pexels.com/photos/3583726/pexels-photo-3583726.jpeg",
@@ -78,6 +81,7 @@ const products = [
     discountedPrice: 19.99,
     stock: 250,
     category: "Apparel",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/6279011/pexels-photo-6279011.jpeg",
       "https://images.pexels.com/photos/6279019/pexels-photo-6279019.jpeg",
@@ -91,12 +95,12 @@ const products = [
   },
   {
     name: "Smart Digital Watch",
-    description:
-      "Feature-rich smartwatch with fitness tracking and notifications.",
+    description: "Feature-rich smartwatch with fitness tracking and notifications.",
     price: 129.0,
     discountedPrice: 109.99,
     stock: 80,
     category: "Electronics",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg",
       "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg",
@@ -115,6 +119,7 @@ const products = [
     discountedPrice: null,
     stock: 40,
     category: "Accessories",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1055681/pexels-photo-1055681.jpeg",
       "https://images.pexels.com/photos/1055676/pexels-photo-1055676.jpeg",
@@ -133,6 +138,7 @@ const products = [
     discountedPrice: 24.99,
     stock: 150,
     category: "Home & Kitchen",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg",
       "https://images.pexels.com/photos/1563355/pexels-photo-1563355.jpeg",
@@ -146,12 +152,12 @@ const products = [
   },
   {
     name: "Wooden Building Blocks",
-    description:
-      "Set of 100 colorful wooden building blocks for creative play.",
+    description: "Set of 100 colorful wooden building blocks for creative play.",
     price: 39.5,
     discountedPrice: 34.99,
     stock: 90,
     category: "Toys & Games",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/165789/pexels-photo-165789.jpeg",
       "https://images.pexels.com/photos/165788/pexels-photo-165788.jpeg",
@@ -170,6 +176,7 @@ const products = [
     discountedPrice: 149.99,
     stock: 65,
     category: "Furniture",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg",
       "https://images.pexels.com/photos/5709353/pexels-photo-5709353.jpeg",
@@ -188,6 +195,7 @@ const products = [
     discountedPrice: 20.0,
     stock: 200,
     category: "Sports & Outdoors",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/416536/pexels-photo-416536.jpeg",
       "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
@@ -206,6 +214,7 @@ const products = [
     discountedPrice: 39.99,
     stock: 180,
     category: "Apparel",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/675883/pexels-photo-675883.jpeg",
       "https://images.pexels.com/photos/1070077/pexels-photo-1070077.jpeg",
@@ -224,6 +233,7 @@ const products = [
     discountedPrice: 219.0,
     stock: 45,
     category: "Electronics",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg",
       "https://images.pexels.com/photos/4145423/pexels-photo-4145423.jpeg",
@@ -233,13 +243,7 @@ const products = [
       { name: "Connectivity", value: "Bluetooth 5.2" },
       { name: "Battery Life", value: "30 hours" },
     ],
-    tags: [
-      "headphones",
-      "noise cancelling",
-      "audio",
-      "electronics",
-      "wireless",
-    ],
+    tags: ["headphones", "noise cancelling", "audio", "electronics", "wireless"],
   },
   {
     name: "Gourmet Coffee Beans",
@@ -248,6 +252,7 @@ const products = [
     discountedPrice: null,
     stock: 100,
     category: "Food & Beverage",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg",
       "https://images.pexels.com/photos/1556685/pexels-photo-1556685.jpeg",
@@ -266,6 +271,7 @@ const products = [
     discountedPrice: 29.99,
     stock: 120,
     category: "Sports & Outdoors",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/3775637/pexels-photo-3775637.jpeg",
       "https://images.pexels.com/photos/3775608/pexels-photo-3775608.jpeg",
@@ -284,6 +290,7 @@ const products = [
     discountedPrice: 49.0,
     stock: 75,
     category: "Accessories",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/211009/pexels-photo-211009.jpeg",
       "https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg",
@@ -302,6 +309,7 @@ const products = [
     discountedPrice: 59.99,
     stock: 90,
     category: "Electronics",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/768847/pexels-photo-768847.jpeg",
       "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
@@ -311,13 +319,7 @@ const products = [
       { name: "Connectivity", value: "Wi-Fi" },
       { name: "Features", value: "Motion Detection, Night Vision" },
     ],
-    tags: [
-      "security camera",
-      "smart home",
-      "electronics",
-      "surveillance",
-      "home security",
-    ],
+    tags: ["security camera", "smart home", "electronics", "surveillance", "home security"],
   },
   {
     name: "Scented Soy Candle",
@@ -326,6 +328,7 @@ const products = [
     discountedPrice: 15.95,
     stock: 150,
     category: "Home & Kitchen",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg",
       "https://images.pexels.com/photos/373571/pexels-photo-373571.jpeg",
@@ -344,6 +347,7 @@ const products = [
     discountedPrice: 39.99,
     stock: 110,
     category: "Toys & Games",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/171743/pexels-photo-171743.jpeg",
       "https://images.pexels.com/photos/169047/pexels-photo-169047.jpeg",
@@ -362,6 +366,7 @@ const products = [
     discountedPrice: 99.0,
     stock: 55,
     category: "Sports & Outdoors",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/186029/pexels-photo-186029.jpeg",
       "https://images.pexels.com/photos/1534884/pexels-photo-1534884.jpeg",
@@ -380,6 +385,7 @@ const products = [
     discountedPrice: 34.99,
     stock: 85,
     category: "Accessories",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/185755/pexels-photo-185755.jpeg",
       "https://images.pexels.com/photos/185753/pexels-photo-185753.jpeg",
@@ -398,6 +404,7 @@ const products = [
     discountedPrice: 49.0,
     stock: 100,
     category: "Electronics",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg",
       "https://images.pexels.com/photos/164647/pexels-photo-164647.jpeg",
@@ -416,6 +423,7 @@ const products = [
     discountedPrice: 24.99,
     stock: 130,
     category: "Home & Kitchen",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg",
       "https://images.pexels.com/photos/373886/pexels-photo-373886.jpeg",
@@ -434,6 +442,7 @@ const products = [
     discountedPrice: 55.0,
     stock: 70,
     category: "Toys & Games",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/416772/pexels-photo-416772.jpeg",
       "https://images.pexels.com/photos/37347/pexels-photo-37347.jpeg",
@@ -452,6 +461,7 @@ const products = [
     discountedPrice: 79.0,
     stock: 60,
     category: "Sports & Outdoors",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
       "https://images.pexels.com/photos/1670766/pexels-photo-1670766.jpeg",
@@ -470,6 +480,7 @@ const products = [
     discountedPrice: 29.0,
     stock: 95,
     category: "Accessories",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1034844/pexels-photo-1034844.jpeg",
       "https://images.pexels.com/photos/163097/pexels-photo-163097.jpeg",
@@ -482,332 +493,13 @@ const products = [
     tags: ["scarf", "fashion", "accessories", "silk", "style"],
   },
   {
-    name: "Ergonomic Office Chair",
-    description: "Adjustable ergonomic office chair with lumbar support.",
-    price: 179.0,
-    discountedPrice: 149.99,
-    stock: 65,
-    category: "Furniture",
-    images: [
-      "https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg",
-      "https://images.pexels.com/photos/5709353/pexels-photo-5709353.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Mesh, Nylon" },
-      { name: "Adjustability", value: "Height, Lumbar, Armrests" },
-      { name: "Weight Capacity", value: "300 lbs" },
-    ],
-    tags: ["office", "chair", "ergonomic", "furniture", "work"],
-  },
-  {
-    name: "Stainless Steel Water Bottle",
-    description: "Reusable stainless steel water bottle, 24 oz.",
-    price: 25.0,
-    discountedPrice: 20.0,
-    stock: 200,
-    category: "Sports & Outdoors",
-    images: [
-      "https://images.pexels.com/photos/416536/pexels-photo-416536.jpeg",
-      "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Stainless Steel" },
-      { name: "Capacity", value: "24 oz" },
-      { name: "Insulation", value: "Double-walled" },
-    ],
-    tags: ["water bottle", "reusable", "stainless steel", "sports", "outdoors"],
-  },
-  {
-    name: "Classic Crew Neck Sweater",
-    description: "Warm and comfortable crew neck sweater for everyday wear.",
-    price: 49.99,
-    discountedPrice: 39.99,
-    stock: 180,
-    category: "Apparel",
-    images: [
-      "https://images.pexels.com/photos/675883/pexels-photo-675883.jpeg",
-      "https://images.pexels.com/photos/1070077/pexels-photo-1070077.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Cotton Blend" },
-      { name: "Fit", value: "Regular" },
-      { name: "Care Instructions", value: "Machine washable" },
-    ],
-    tags: ["sweater", "apparel", "casual", "clothing", "crew neck"],
-  },
-  {
-    name: "Noise Cancelling Headphones",
-    description: "Over-ear headphones with superior active noise cancellation.",
-    price: 249.0,
-    discountedPrice: 219.0,
-    stock: 45,
-    category: "Electronics",
-    images: [
-      "https://images.pexels.com/photos/1717969/pexels-photo-1717969.jpeg",
-      "https://images.pexels.com/photos/4145423/pexels-photo-4145423.jpeg",
-    ],
-    specifications: [
-      { name: "Technology", value: "Active Noise Cancellation" },
-      { name: "Connectivity", value: "Bluetooth 5.2" },
-      { name: "Battery Life", value: "30 hours" },
-    ],
-    tags: [
-      "headphones",
-      "noise cancelling",
-      "audio",
-      "electronics",
-      "wireless",
-    ],
-  },
-  {
-    name: "Gourmet Coffee Beans",
-    description: "Freshly roasted Arabica coffee beans, rich flavor.",
-    price: 18.5,
-    discountedPrice: null,
-    stock: 100,
-    category: "Food & Beverage",
-    images: [
-      "https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg",
-      "https://images.pexels.com/photos/1556685/pexels-photo-1556685.jpeg",
-    ],
-    specifications: [
-      { name: "Type", value: "Arabica" },
-      { name: "Roast", value: "Medium" },
-      { name: "Origin", value: "Ethiopia" },
-    ],
-    tags: ["coffee", "beans", "gourmet", "food", "beverage"],
-  },
-  {
-    name: "Yoga Mat - Non-Slip",
-    description: "High-quality non-slip yoga mat for exercise and fitness.",
-    price: 35.0,
-    discountedPrice: 29.99,
-    stock: 120,
-    category: "Sports & Outdoors",
-    images: [
-      "https://images.pexels.com/photos/3775637/pexels-photo-3775637.jpeg",
-      "https://images.pexels.com/photos/3775608/pexels-photo-3775608.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Eco-friendly TPE" },
-      { name: "Thickness", value: "6mm" },
-      { name: "Dimensions", value: "72 x 24 inches" },
-    ],
-    tags: ["yoga", "mat", "fitness", "exercise", "non-slip"],
-  },
-  {
-    name: "Classic Leather Wallet",
-    description: "Genuine leather bifold wallet for men.",
-    price: 59.0,
-    discountedPrice: 49.0,
-    stock: 75,
-    category: "Accessories",
-    images: [
-      "https://images.pexels.com/photos/211009/pexels-photo-211009.jpeg",
-      "https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Genuine Leather" },
-      { name: "Style", value: "Bifold" },
-      { name: "Card Slots", value: "8" },
-    ],
-    tags: ["wallet", "leather", "accessories", "men", "fashion"],
-  },
-  {
-    name: "Smart Home Security Camera",
-    description: "Wireless indoor security camera with motion detection.",
-    price: 69.99,
-    discountedPrice: 59.99,
-    stock: 90,
-    category: "Electronics",
-    images: [
-      "https://images.pexels.com/photos/768847/pexels-photo-768847.jpeg",
-      "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg",
-    ],
-    specifications: [
-      { name: "Resolution", value: "1080p HD" },
-      { name: "Connectivity", value: "Wi-Fi" },
-      { name: "Features", value: "Motion Detection, Night Vision" },
-    ],
-    tags: [
-      "security camera",
-      "smart home",
-      "electronics",
-      "surveillance",
-      "home security",
-    ],
-  },
-  {
-    name: "Scented Soy Candle",
-    description: "Hand-poured soy candle with natural essential oils.",
-    price: 19.95,
-    discountedPrice: 15.95,
-    stock: 150,
-    category: "Home & Kitchen",
-    images: [
-      "https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg",
-      "https://images.pexels.com/photos/373571/pexels-photo-373571.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Soy Wax" },
-      { name: "Scent", value: "Lavender" },
-      { name: "Burn Time", value: "50 hours" },
-    ],
-    tags: ["candle", "soy", "scented", "home", "decor", "aromatherapy"],
-  },
-  {
-    name: "Children's Educational Toy Set",
-    description: "Set of colorful educational toys for toddlers.",
-    price: 45.0,
-    discountedPrice: 39.99,
-    stock: 110,
-    category: "Toys & Games",
-    images: [
-      "https://images.pexels.com/photos/171743/pexels-photo-171743.jpeg",
-      "https://images.pexels.com/photos/169047/pexels-photo-169047.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Wood, Plastic" },
-      { name: "Age Range", value: "1-3 years" },
-      { name: "Includes", value: "Blocks, Puzzles" },
-    ],
-    tags: ["toys", "educational", "children", "kids", "toddler", "learning"],
-  },
-  {
-    name: "Outdoor Camping Tent",
-    description: "Lightweight and waterproof tent for 2-3 people.",
-    price: 119.0,
-    discountedPrice: 99.0,
-    stock: 55,
-    category: "Sports & Outdoors",
-    images: [
-      "https://images.pexels.com/photos/186029/pexels-photo-186029.jpeg",
-      "https://images.pexels.com/photos/1534884/pexels-photo-1534884.jpeg",
-    ],
-    specifications: [
-      { name: "Capacity", value: "2-3 Person" },
-      { name: "Material", value: "Polyester, Nylon" },
-      { name: "Water Resistance", value: "3000mm" },
-    ],
-    tags: ["tent", "camping", "outdoor", "hiking", "travel"],
-  },
-  {
-    name: "Designer Reading Glasses",
-    description: "Stylish reading glasses with anti-glare lenses.",
-    price: 39.99,
-    discountedPrice: 34.99,
-    stock: 85,
-    category: "Accessories",
-    images: [
-      "https://images.pexels.com/photos/185755/pexels-photo-185755.jpeg",
-      "https://images.pexels.com/photos/185753/pexels-photo-185753.jpeg",
-    ],
-    specifications: [
-      { name: "Frame Material", value: "Acetate" },
-      { name: "Lens Material", value: "Polycarbonate" },
-      { name: "Magnification", value: "+1.50" },
-    ],
-    tags: ["glasses", "reading", "designer", "accessories", "fashion"],
-  },
-  {
-    name: "Wireless Bluetooth Speaker",
-    description: "Portable Bluetooth speaker with rich bass and clear sound.",
-    price: 59.0,
-    discountedPrice: 49.0,
-    stock: 100,
-    category: "Electronics",
-    images: [
-      "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg",
-      "https://images.pexels.com/photos/164647/pexels-photo-164647.jpeg",
-    ],
-    specifications: [
-      { name: "Connectivity", value: "Bluetooth 5.0" },
-      { name: "Battery Life", value: "10 hours" },
-      { name: "Water Resistance", value: "IPX5" },
-    ],
-    tags: ["speaker", "bluetooth", "wireless", "audio", "portable"],
-  },
-  {
-    name: "Natural Bamboo Cutting Board",
-    description: "Durable and eco-friendly bamboo cutting board.",
-    price: 29.99,
-    discountedPrice: 24.99,
-    stock: 130,
-    category: "Home & Kitchen",
-    images: [
-      "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg",
-      "https://images.pexels.com/photos/373886/pexels-photo-373886.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Bamboo" },
-      { name: "Size", value: "12 x 18 inches" },
-      { name: "Features", value: "Knife-friendly" },
-    ],
-    tags: ["cutting board", "bamboo", "kitchen", "home", "eco-friendly"],
-  },
-  {
-    name: "Remote Control Car",
-    description: "High-speed remote control car for kids and adults.",
-    price: 65.0,
-    discountedPrice: 55.0,
-    stock: 70,
-    category: "Toys & Games",
-    images: [
-      "https://images.pexels.com/photos/416772/pexels-photo-416772.jpeg",
-      "https://images.pexels.com/photos/37347/pexels-photo-37347.jpeg",
-    ],
-    specifications: [
-      { name: "Scale", value: "1:16" },
-      { name: "Speed", value: "20 mph" },
-      { name: "Battery", value: "Rechargeable" },
-    ],
-    tags: ["rc car", "remote control", "toys", "games", "kids", "hobby"],
-  },
-  {
-    name: "Hiking Backpack - 50L",
-    description: "Durable and comfortable 50-liter hiking backpack.",
-    price: 89.0,
-    discountedPrice: 79.0,
-    stock: 60,
-    category: "Sports & Outdoors",
-    images: [
-      "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg",
-      "https://images.pexels.com/photos/1670766/pexels-photo-1670766.jpeg",
-    ],
-    specifications: [
-      { name: "Capacity", value: "50 Liters" },
-      { name: "Material", value: "Water-resistant Nylon" },
-      { name: "Features", value: "Rain cover, Multiple compartments" },
-    ],
-    tags: ["backpack", "hiking", "outdoor", "sports", "travel"],
-  },
-
-  {
-    name: "Fashion Scarf - Silk Blend",
-    description: "Elegant scarf made from a soft silk blend.",
-    price: 35.0,
-    discountedPrice: 29.0,
-    stock: 95,
-    category: "Accessories",
-    images: [
-      "https://images.pexels.com/photos/1034844/pexels-photo-1034844.jpeg",
-      "https://images.pexels.com/photos/163097/pexels-photo-163097.jpeg",
-    ],
-    specifications: [
-      { name: "Material", value: "Silk Blend" },
-      { name: "Size", value: "70 x 30 inches" },
-      { name: "Care Instructions", value: "Hand wash" },
-    ],
-    tags: ["scarf", "fashion", "silk", "accessories", "elegant"],
-  },
-  {
     name: "Portable Power Bank",
-    description:
-      "High-capacity portable power bank for charging devices on the go.",
+    description: "High-capacity portable power bank for charging devices on the go.",
     price: 45.0,
     discountedPrice: 39.0,
     stock: 115,
     category: "Electronics",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/159777/pexels-photo-159777.jpeg",
       "https://images.pexels.com/photos/3785739/pexels-photo-3785739.jpeg",
@@ -817,13 +509,7 @@ const products = [
       { name: "Ports", value: "USB-A, USB-C" },
       { name: "Features", value: "Fast Charging" },
     ],
-    tags: [
-      "power bank",
-      "portable charger",
-      "electronics",
-      "mobile",
-      "accessory",
-    ],
+    tags: ["power bank", "portable charger", "electronics", "mobile", "accessory"],
   },
   {
     name: "Ceramic Plant Pot - Small",
@@ -832,6 +518,7 @@ const products = [
     discountedPrice: 9.99,
     stock: 160,
     category: "Home & Garden",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1400379/pexels-photo-1400379.jpeg",
       "https://images.pexels.com/photos/1400378/pexels-photo-1400378.jpeg",
@@ -850,6 +537,7 @@ const products = [
     discountedPrice: 16.99,
     stock: 140,
     category: "Toys & Games",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1763127/pexels-photo-1763127.jpeg",
       "https://images.pexels.com/photos/1763130/pexels-photo-1763130.jpeg",
@@ -863,12 +551,12 @@ const products = [
   },
   {
     name: "Lightweight Rain Jacket",
-    description:
-      "Waterproof and lightweight rain jacket for outdoor activities.",
+    description: "Waterproof and lightweight rain jacket for outdoor activities.",
     price: 55.0,
     discountedPrice: 45.0,
     stock: 70,
     category: "Apparel",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/1836915/pexels-photo-1836915.jpeg",
       "https://images.pexels.com/photos/1836914/pexels-photo-1836914.jpeg",
@@ -882,12 +570,12 @@ const products = [
   },
   {
     name: "Electric Kettle - Stainless Steel",
-    description:
-      "Fast-boiling electric kettle with a stainless steel interior.",
+    description: "Fast-boiling electric kettle with a stainless steel interior.",
     price: 39.99,
     discountedPrice: 32.99,
     stock: 90,
     category: "Home & Kitchen",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg",
       "https://images.pexels.com/photos/699467/pexels-photo-699467.jpeg",
@@ -906,6 +594,7 @@ const products = [
     discountedPrice: 18.5,
     stock: 120,
     category: "Toys & Games",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg",
       "https://images.pexels.com/photos/372745/pexels-photo-372745.jpeg",
@@ -924,16 +613,14 @@ const products = [
     discountedPrice: 65.0,
     stock: 55,
     category: "Home & Kitchen",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/46253/pexels-photo-46253.jpeg",
       "https://images.pexels.com/photos/1561161/pexels-photo-1561161.jpeg",
     ],
     specifications: [
       { name: "Material", value: "Stainless Steel" },
-      {
-        name: "Includes",
-        value: "Chef's Knife, Bread Knife, Utility Knife, Paring Knife",
-      },
+      { name: "Includes", value: "Chef's Knife, Bread Knife, Utility Knife, Paring Knife" },
       { name: "Storage", value: "Wooden Block" },
     ],
     tags: ["kitchen knives", "knife set", "home", "cooking", "utensils"],
@@ -945,6 +632,7 @@ const products = [
     discountedPrice: 24.99,
     stock: 180,
     category: "Home & Decor",
+    bestseller: true,
     images: [
       "https://images.pexels.com/photos/101801/pexels-photo-101801.jpeg",
       "https://images.pexels.com/photos/101799/pexels-photo-101799.jpeg",
@@ -963,6 +651,7 @@ const products = [
     discountedPrice: 42.0,
     stock: 80,
     category: "Toys & Games",
+    bestseller: false,
     images: [
       "https://images.pexels.com/photos/9788/play-board-game-games-leisure.jpg",
       "https://images.pexels.com/photos/163077/board-game-playing-cards-leisure-game-163077.jpeg",
@@ -974,6 +663,25 @@ const products = [
     ],
     tags: ["board game", "toys", "games", "family", "classic", "fun"],
   },
+  {
+    name: "Fashion Scarf - Silk Blend",
+    description: "Elegant scarf made from a soft silk blend.",
+    price: 35.0,
+    discountedPrice: 29.0,
+    stock: 95,
+    category: "Accessories",
+    bestseller: false,
+    images: [
+      "https://images.pexels.com/photos/1034844/pexels-photo-1034844.jpeg",
+      "https://images.pexels.com/photos/163097/pexels-photo-163097.jpeg",
+    ],
+    specifications: [
+      { name: "Material", value: "Silk Blend" },
+      { name: "Size", value: "70 x 30 inches" },
+      { name: "Care Instructions", value: "Hand wash" },
+    ],
+    tags: ["scarf", "fashion", "silk", "accessories", "elegant"],
+  }
 ];
 
 module.exports = products;

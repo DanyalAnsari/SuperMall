@@ -9,11 +9,47 @@ const logger = require("./logger");
 const signToken = (id) => {
   try {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRES_IN,
+      expiresIn: process.env.JWT_EXPIRES_IN || '1h',
     });
   } catch (error) {
     logger.error('Token signing error:', error);
     throw new Error('Authentication token generation failed');
+  }
+};
+
+/**
+ * Signs refresh token for extended authentication
+ * @param {string} id - User ID
+ * @returns {string} Refresh token
+ */
+const signRefreshToken = (id) => {
+  try {
+    return jwt.sign({ id }, process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET, {
+      expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
+    });
+  } catch (error) {
+    logger.error('Refresh token signing error:', error);
+    throw new Error('Refresh token generation failed');
+  }
+};
+
+/**
+ * Creates both access and refresh tokens
+ * @param {string} id - User ID
+ * @returns {Object} Object containing access and refresh tokens
+ */
+const createTokens = (id) => {
+  try {
+    const accessToken = signToken(id);
+    const refreshToken = signRefreshToken(id);
+    
+    return {
+      accessToken,
+      refreshToken
+    };
+  } catch (error) {
+    logger.error('Token creation error:', error);
+    throw new Error('Token generation failed');
   }
 };
 
@@ -27,7 +63,7 @@ const sendAuthSuccessResponse = (res, statusCode, data) => {
   try {
     const token = signToken(data._id);
     const cookieOptions = {
-      expiresIn: process.env.JWT_EXPIRES_IN,
+      expiresIn: process.env.JWT_EXPIRES_IN || '1h',
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict'
@@ -109,6 +145,8 @@ const getPaginationMeta = (total, page, limit) => {
 
 module.exports = {
   signToken,
+  signRefreshToken,
+  createTokens,
   sendAuthSuccessResponse,
   sendSuccessResponse,
   filterReqObj,

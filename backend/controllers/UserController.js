@@ -5,7 +5,7 @@ const { OrderModel } = require("../models/OrderModel");
 const asyncErrorHandler = require("../utils/AsyncErrorHandler");
 const CustomError = require("../utils/CustomError");
 const ApiFeatures = require("../utils/ApiFeatures");
-const { filterReqObj, sendSuccessResponse } = require("../utils/Utilities");
+const { filterReqObj, sendSuccessResponse, createTokens } = require("../utils/Utilities");
 
 /**
  * Get Current User Profile
@@ -13,10 +13,13 @@ const { filterReqObj, sendSuccessResponse } = require("../utils/Utilities");
  * @access Private
  */
 const getProfile = asyncErrorHandler(async (req, res, next) => {
-  const user = await UserModel.findById(req.user.id);
+  // We use req.user._id since it's more reliable than req.user.id
+  const user = await UserModel.findById(req.user._id);
+  
   if (!user) {
     return next(new CustomError("User not found", 404));
   }
+  
   sendSuccessResponse(res, 200, { user });
 });
 
@@ -41,21 +44,26 @@ const updateProfile = asyncErrorHandler(async (req, res, next) => {
     return next(new CustomError("No valid fields to update", 400));
   }
 
-  const user = await UserModel.findByIdAndUpdate(
-    req.user._id,
-    filteredObject,
-    {
-      new: true,
-      runValidators: true
-    }
-  );
+  // Use findById + save to ensure pre-save middleware runs
+  const user = await UserModel.findById(req.user._id);
+  
+  if (!user) {
+    return next(new CustomError("User not found", 404));
+  }
+  
+  // Update fields
+  Object.keys(filteredObject).forEach(field => {
+    user[field] = filteredObject[field];
+  });
+  
+  await user.save({ validateBeforeSave: true });
 
   sendSuccessResponse(res, 200, { user });
 });
 
 /**
  * Update User Password
- * @route PUT /api/users/update-password
+ * @route PATCH /api/users/update-password
  * @access Private
  */
 const updatePassword = asyncErrorHandler(async (req, res, next) => {
@@ -76,9 +84,41 @@ const updatePassword = asyncErrorHandler(async (req, res, next) => {
 
   // Update password
   user.password = newPassword;
+  
+  // Invalidate refresh tokens when password changes
+  user.refresh_token = undefined;
+  
   await user.save();
 
-  sendSuccessResponse(res, 200, { message: "Password updated successfully" });
+  // Generate new tokens
+  const { accessToken, refreshToken } = createTokens(user._id);
+  
+  // Update refresh token in database
+  user.refresh_token = refreshToken;
+  await user.save({ validateBeforeSave: false });
+
+  // Set auth cookies
+  const cookieOptions = {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict'
+  };
+
+  res.cookie('refresh_token', refreshToken, {
+    ...cookieOptions,
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days
+  });
+
+  res.cookie('access_token', accessToken, {
+    ...cookieOptions,
+    expires: new Date(Date.now() + 60 * 60 * 1000) // 1 hour
+  });
+
+  sendSuccessResponse(res, 200, { 
+    message: "Password updated successfully",
+    accessToken,
+    refreshToken
+  });
 });
 
 /**
@@ -95,7 +135,7 @@ const getAllUsers = asyncErrorHandler(async (req, res, next) => {
 
   // Execute queries concurrently
   const [users, totalUsers] = await Promise.all([
-    features.query.select('-password'),
+    features.query.select('-password -refresh_token'),
     UserModel.countDocuments(features.queryObj)
   ]);
 
@@ -104,6 +144,7 @@ const getAllUsers = asyncErrorHandler(async (req, res, next) => {
     pagination: {
       total: totalUsers,
       page: features.page || 1,
+      limit: features.limit || 10,
       pages: Math.ceil(totalUsers / (features.limit || 10))
     }
   });
@@ -115,7 +156,8 @@ const getAllUsers = asyncErrorHandler(async (req, res, next) => {
  * @access Admin
  */
 const getUserById = asyncErrorHandler(async (req, res, next) => {
-  const user = await UserModel.findById(req.params.id).select('-password');
+  const user = await UserModel.findById(req.params.id)
+    .select('-password -refresh_token');
   
   if (!user) {
     return next(new CustomError("User not found", 404));
@@ -137,20 +179,30 @@ const updateUser = asyncErrorHandler(async (req, res, next) => {
     return next(new CustomError("No valid fields to update", 400));
   }
 
-  const user = await UserModel.findByIdAndUpdate(
-    req.params.id,
-    filteredObject,
-    {
-      new: true,
-      runValidators: true
-    }
-  ).select('-password');
-
+  // Find user first
+  const user = await UserModel.findById(req.params.id);
+  
   if (!user) {
     return next(new CustomError("User not found", 404));
   }
 
-  sendSuccessResponse(res, 200, { user });
+  // Handle special case when deactivating a user
+  if (filteredObject.isActive === false && user.isActive === true) {
+    // Invalidate refresh tokens when deactivating
+    user.refresh_token = undefined;
+  }
+  
+  // Update fields
+  Object.keys(filteredObject).forEach(field => {
+    user[field] = filteredObject[field];
+  });
+
+  await user.save({ validateBeforeSave: true });
+
+  sendSuccessResponse(res, 200, { 
+    user,
+    message: "User updated successfully" 
+  });
 });
 
 /**
@@ -160,7 +212,7 @@ const updateUser = asyncErrorHandler(async (req, res, next) => {
  */
 const deleteUser = asyncErrorHandler(async (req, res, next) => {
   // Prevent self-deletion
-  if (req.user.id === req.params.id) {
+  if (req.user._id.toString() === req.params.id) {
     return next(new CustomError("Cannot delete your own account", 400));
   }
 

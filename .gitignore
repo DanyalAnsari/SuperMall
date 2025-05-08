@@ -1,7 +1,60 @@
-frontend
-.vscode
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing
+/coverage
+/cypress/videos/
+/cypress/screenshots/
+
+# Production
+/build
+/dist
+/out
+
+# Environment files
 .env
 .env.local
 .env.development
-.env.production
 .env.test
+.env.production
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional cache directories
+.npm/
+.eslintcache
+.stylelintcache
+
+# Frontend specific
+frontend/node_modules/
+frontend/build/
+frontend/coverage/
+frontend/.env
+frontend/.env.local
+frontend/.env.development
+frontend/.env.production
+
+# Backend specific
+backend/node_modules/
+backend/dist/
+backend/coverage/
+backend/.env
+backend/logs/
+backend/uploads/
+
+# Misc
+*.log
+.cache/
+.temp/

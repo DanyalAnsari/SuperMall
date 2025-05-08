@@ -14,7 +14,7 @@ const getAllCategories = asyncErrorHandler(async (req, res, next) => {
 
   // Execute queries concurrently
   const [categories, totalCategories] = await Promise.all([
-    features.query.populate('subcategories', 'name slug'),
+    features.query.populate('subcategories', 'name slug icon'),
     CategoryModel.countDocuments(features.queryObj)
   ]);
 
@@ -30,7 +30,7 @@ const getAllCategories = asyncErrorHandler(async (req, res, next) => {
 
 const getCategoryById = asyncErrorHandler(async (req, res, next) => {
   const category = await CategoryModel.findById(req.params.id)
-    .populate('subcategories', 'name slug image');
+    .populate('subcategories', 'name slug icon');
 
   if (!category) {
     return next(new CustomError("Category not found", 404));
@@ -40,7 +40,7 @@ const getCategoryById = asyncErrorHandler(async (req, res, next) => {
 });
 
 const createCategory = asyncErrorHandler(async (req, res, next) => {
-  const { name, description, parent_category, image, isActive } = req.body;
+  const { name, description, parent_category, icon, isActive } = req.body;
 
   // Validate parent category if provided
   if (parent_category) {
@@ -57,12 +57,12 @@ const createCategory = asyncErrorHandler(async (req, res, next) => {
     name,
     description,
     parent_category,
-    image,
+    icon,
     isActive: isActive ?? true
   });
 
   // Populate subcategories virtual
-  await category.populate('subcategories', 'name slug');
+  await category.populate('subcategories', 'name slug icon');
 
   sendSuccessResponse(res, 201, { category });
 });
@@ -96,7 +96,7 @@ const updateCategory = asyncErrorHandler(async (req, res, next) => {
     id,
     updates,
     { new: true, runValidators: true }
-  ).populate('subcategories', 'name slug');
+  ).populate('subcategories', 'name slug icon');
 
   sendSuccessResponse(res, 200, { category: updatedCategory });
 });
@@ -173,7 +173,8 @@ const getProductsByCategory = asyncErrorHandler(async (req, res, next) => {
       id: category._id,
       name: category.name,
       description: category.description,
-      slug: category.slug
+      slug: category.slug,
+      icon: category.icon
     },
     products,
     pagination: {

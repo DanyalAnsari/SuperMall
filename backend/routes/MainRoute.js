@@ -9,7 +9,7 @@ const router=require('express').Router()
 
 router.use("/auth", authRouter);
 router.use("/users", userRouter);
-router.use("/category", categoryRouter);
+router.use("/categories", categoryRouter);
 router.use("/products", productRouter);
 router.use("/cart", cartRouter);
 router.use('/orders', OrderRouter )
